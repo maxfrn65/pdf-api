@@ -11,17 +11,19 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
 class PdfController extends AbstractController
 {
     #[Route('/pdf', name: 'app_pdf')]
-    public function htmlToPdf(HttpClientInterface $client, ParameterBagInterface $param) {
+    public function htmlToPdf(HttpClientInterface $client, ParameterBagInterface $param, $file) {
 
         $service_url=$param->get('service_url');
 
         $response = $client->request(
             'POST',
-            $url_service.'/forms/chromium/convert/html', [
+            $service_url.'/forms/chromium/convert/html', [
                 'headers' => [
                     'Content-Type' => 'multipart/form-data'
                 ],
                 'body' => $file
         ]);
+        $content = $response->getContent();
+        dump($content);
     }
 }

@@ -10,9 +10,9 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class PdfController extends AbstractController
 {
-    #[Route('/pdf', name: 'app_pdf')]
-    public function htmlToPdf(HttpClientInterface $client, ParameterBagInterface $param, $file) {
-
+    #[Route('/html-to-pdf', name: 'app_pdf')]
+    public function htmlToPdf(HttpClientInterface $client, ParameterBagInterface $param, $file): void
+    {
         $service_url=$param->get('service_url');
 
         $response = $client->request(

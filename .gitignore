@@ -8,3 +8,4 @@
 /var/
 /vendor/
 ###< symfony/framework-bundle ###
+/pdf-api.paw
